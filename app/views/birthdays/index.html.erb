@@ -1,0 +1,78 @@
+
+
+<%if signed_in?%>
+
+<div class="navbar navbar-fixed-top navbar-inner">
+<div class="nav-collapse">
+<ul class="nav">
+<li><%if current_user.email == "new.mingliang@gmail.com" %>
+      <%= link_to "Hi!Kevin", '' , class: "brand btn-warning"%>
+
+  <%end%>
+  </li>
+
+</ul>
+
+
+  <div class="pull-right">
+  <ul class="nav">
+
+      <li>
+
+    
+            <%= link_to "logout", destroy_user_session_path, method: :delete %> 
+            
+
+      </li>
+      <li><%= link_to "edit", edit_user_registration_path %></li>
+
+  </ul>
+</div>
+
+  </div>
+
+
+
+</div>
+
+<div class="top"></div>
+<div class="container">
+
+<h1>Listing birthdays</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Img</th>
+    <th>Wish</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @birthdays.each do |birthday| %>
+  <tr>
+    <td><%= birthday.title %></td>
+
+    <div class="span5"><%= image_tag(birthday.img) %></div>
+    <td><%= birthday.wish %></td>
+    <td><%= link_to 'Show', birthday %></td>
+    <td><%= link_to 'Edit', edit_birthday_path(birthday) %></td>
+    <td><%= link_to 'Destroy', birthday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Birthday', new_birthday_path %>
+</div>
+
+<%else%>
+
+<script type="text/javascript">
+window.location.href="/users/sign_in"
+
+</script>
+
+<%end%>

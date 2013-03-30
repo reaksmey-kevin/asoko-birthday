@@ -1,0 +1,36 @@
+<div class="modal modal-form">
+
+
+<div class="modal-header">
+<h2>Sign in</h2>
+</div>
+<div class="modal-body">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="span4"><%= f.label :email %></div>
+  <div class="span4"><%= f.email_field :email, :autofocus => true %></div>
+
+  <div class="span4"><%= f.label :password %></div>
+  <div class="span4"><%= f.password_field :password %></div>
+<div class="span4">
+  <% if devise_mapping.rememberable? -%>
+
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %>
+
+  <% end -%>
+</div>
+
+
+</div>
+
+
+<div class="modal-footer">
+<div class="pull-right">
+<%= f.submit "login", class: "btn btn-primary"%>
+</div>
+
+
+<% end %>
+</div>
+
+</div>
